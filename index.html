@@ -18,12 +18,14 @@
         let playerRecord = 0
         let computerRecord = 0
         let tieRecord = 0
-        
+        let stringVerify1 = "ROCK"
+        let stringVerify2 = "PAPER"
+        let stringVerify3 = "SCISSORS"
       //Ask for player choice and check if it is valid  
         function getPlayerChoice(){
         let a = prompt("Choose rock, paper or scissors. Please")
         a = a.toUpperCase()
-        while (a == !("ROCK"||"PAPER"||"SCISSORS")){
+        while (!(["ROCK", "PAPER", "SCISSORS"].includes(a))){
             a = prompt("Didn't recognize that, please try again.")
             a = a.toUpperCase()
         }
@@ -56,31 +58,25 @@
             if ((playerChoice == "ROCK" && computerChoice == "SCISSORS")||(playerChoice == "PAPER" && computerChoice == "ROCK")||(playerChoice == "SCISSORS" && computerChoice == "PAPER")){
                 console.log("You win!!!")
                 playerRecord++
-                //console.log(playerRecord)
-                //console.log(gameStats)
+                return playerRecord;
             }
+            
             //If player selected rock and computer paper OR if player selected paper and computer scissors OR if player selected scissors and computer rock
             //the computer wins, show message and record victory for computer.
             else if ((playerChoice == "ROCK" && computerChoice == "PAPER")||(playerChoice == "PAPER" && computerChoice == "SCISSORS")||(playerChoice == "SCISSORS" && computerChoice == "ROCK")){
                 console.log("You Lose!!!")
                 computerRecord++
-                //console.log(computerRecord)
-                //console.log(gameStats)
+                return computerRecord;
             }
+            
             //If player selected scissors and computer scissors OR if the player selected papeper and computer paper OR if player selected rock and computer rock, it is a tie, show message, record tie.
             else if ((playerChoice == "ROCK" && computerChoice == "ROCK")||(playerChoice == "PAPER" && computerChoice == "PAPER")||(playerChoice == "SCISSORS" && computerChoice == "SCISSORS")){
                 tieRecord++
                 console.log("It is a tie!!")
-                //console.log(tieRecord)
-                //console.log(gameStats)
-            }
+                return tieRecord;
+            }     
 
-     //When the victory record for the player or the computer reaches 5, the game is over, congratule winner, show stats.
-            let gameStats = `You: ${playerRecord} - Computer: ${computerRecord} - Ties ${tieRecord}`
-
-        return{
-            gameStats
-        }
+     //When the victory record for the player or the computer reaches 5, the game is over, congratule winner, show stats.        
     }
     //Create a game with five rounds
     function game(){
@@ -88,12 +84,13 @@
             let playerChoice = getPlayerChoice()
             let computerChoice = getComputerChoice()
             playRound(playerChoice, computerChoice)
-            return gameStats
+            let gameStats = `You: ${playerRecord} - Computer: ${computerRecord} - Ties ${tieRecord}` 
+         console.log(gameStats)
     }
-        
+
     }
        
-        console.log(game())
+        game()
         
     </script>
 </body>
