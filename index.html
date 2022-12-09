@@ -56,7 +56,7 @@
             //If player selected rock and computer scissors OR if player selected paper and computer rock OR if player selected scissors and computer paper,
             //the player wins show message and record victory for player.
             if ((playerChoice == "ROCK" && computerChoice == "SCISSORS")||(playerChoice == "PAPER" && computerChoice == "ROCK")||(playerChoice == "SCISSORS" && computerChoice == "PAPER")){
-                console.log("You win!!!")
+                console.log("You win the round!")
                 playerRecord++
                 return playerRecord;
             }
@@ -64,7 +64,7 @@
             //If player selected rock and computer paper OR if player selected paper and computer scissors OR if player selected scissors and computer rock
             //the computer wins, show message and record victory for computer.
             else if ((playerChoice == "ROCK" && computerChoice == "PAPER")||(playerChoice == "PAPER" && computerChoice == "SCISSORS")||(playerChoice == "SCISSORS" && computerChoice == "ROCK")){
-                console.log("You Lose!!!")
+                console.log("You lose the round!")
                 computerRecord++
                 return computerRecord;
             }
@@ -84,10 +84,17 @@
             let playerChoice = getPlayerChoice()
             let computerChoice = getComputerChoice()
             playRound(playerChoice, computerChoice)
-            let gameStats = `You: ${playerRecord} - Computer: ${computerRecord} - Ties ${tieRecord}` 
-         console.log(gameStats)
+            //let gameStats = `You: ${playerRecord} - Computer: ${computerRecord} - Ties ${tieRecord}` 
+         //console.log(gameStats)
     }
-
+    if (playerRecord > computerRecord){
+        console.log("You win the game!!!")
+    }
+    else {
+        console.log("You lose the game!!!")
+    }
+    let gameStats = `You: ${playerRecord} - Computer: ${computerRecord} - Ties ${tieRecord}` 
+         console.log(gameStats)
     }
        
         game()
