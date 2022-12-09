@@ -14,12 +14,17 @@
         //Ask for player name
         //The computer welcomes the player
         console.log("Welcome player to a game of Rock Paper Scissors")
-        //The computer asks the player to choose rock, paper or scissors.
+        //The computer asks the player to choose rock, paper or scissors and remembers it
+        let playerRecord = 0
+        let computerRecord = 0
         let playerChoice = prompt("Choose rock, paper or scissors. Please")
+        playerChoice = playerChoice.toUpperCase()
         //The computer remembers the choice and checks if it is valid
-        if playerChoice.toUpperCase !== ("PAPER" || "SCISSORS" || "ROCK"){
+        if (playerChoice == !("PAPER" || "SCISSORS" || "ROCK")){
+            
             console.log("Did not recognise a choice, please try again")
         }
+        console.log(playerChoice)
         //The computer chooses rock, paper or scissors randomly
         function getRndInteger(min, max) {
         return Math.floor(Math.random() * (max - min + 1) ) + min;
@@ -33,9 +38,13 @@
         }
         else {
         computerChoice = "SCISSORS"}
-        console.log(computerChoice)
+        //console.log(computerChoice)
         //The computer compares the players choice with its choice
         //If player selected rock and computer scissors, the player wins, show message and record victory for player.
+        if (playerChoice == "ROCK" && computerChoice == "SCISSORS"){
+            console.log("You win!!!")
+            playerRecord = playerRecord ++
+        }
         //If player selected rock and computer paper, the computer wins, show message and record victory for computer.
         //If player selected rock and computer rock, it is a tie, show message, record tie.
         //If player selected paper and computer rock, the player wins, show message and record victory for player.
