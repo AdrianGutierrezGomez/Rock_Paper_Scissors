@@ -20,8 +20,16 @@
         let computerRecord = 0
         let tieRecord = 0
         
-        let playerChoice = prompt("Choose rock, paper or scissors. Please")
-        playerChoice = playerChoice.toUpperCase()
+        let playerChoice = getPlayerChoice()
+        function getPlayerChoice(){
+        let a = prompt("Choose rock, paper or scissors. Please")
+        a = a.toUpperCase()
+        while (a == !("ROCK"||"PAPER"||"SCISSORS")){
+            a = prompt("Didn't recognize that, please try again.")
+            a = a.toUpperCase()
+        }
+        return a
+        }
         //The computer remembers the choice and checks if it is valid
       //  if (playerChoice !== ("PAPER" || "SCISSORS" || "ROCK")){
       //      console.log("Did not recognise a choice, please try again")
