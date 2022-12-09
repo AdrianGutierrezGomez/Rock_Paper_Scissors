@@ -12,13 +12,14 @@
     <script>
         //Explanation of what this game is and what this is
         //Ask for player name
-        let playerName = prompt("What is your name?")
+        //let playerName = prompt("What is your name?")
         //The computer welcomes the player
-        console.log(`Welcome ${playerName} to a game of Rock Paper Scissors`)
+        //console.log(`Welcome ${playerName} to a game of Rock Paper Scissors`)
         //The computer asks the player to choose rock, paper or scissors and remembers it
         let playerRecord = 0
         let computerRecord = 0
         let tieRecord = 0
+        let gameStats = `You: ${playerRecord} - Computer: ${computerRecord} - Ties ${tieRecord}`
         let playerChoice = prompt("Choose rock, paper or scissors. Please")
         playerChoice = playerChoice.toUpperCase()
         //The computer remembers the choice and checks if it is valid
@@ -44,28 +45,50 @@
         //If player selected rock and computer scissors, the player wins, show message and record victory for player.
         if (playerChoice == "ROCK" && computerChoice == "SCISSORS"){
             console.log("You win!!!")
-            playerRecord = playerRecord++
-            console.log(computerRecord)
+            playerRecord++
+            console.log(playerRecord)
+            console.log(gameStats)
         }
         //If player selected rock and computer paper, the computer wins, show message and record victory for computer.
-        else if (playerChoice == "ROCK" && computerChoice == "SCISSORS"){
+        else if (playerChoice == "ROCK" && computerChoice == "PAPER"){
             console.log("You Lose!!!")
-            computerRecord = computerRecord++
+            computerRecord++
             console.log(computerRecord)
-        }
-        //If player selected rock and computer rock, it is a tie, show message, record tie.
-        else {
-            console.log("It was a tie!!")
-            tieRecord++
-            console.log(tieRecord)
-
+            console.log(gameStats)
         }
         //If player selected paper and computer rock, the player wins, show message and record victory for player.
+        else if (playerChoice == "PAPER" && computerChoice == "ROCK"){
+            console.log("You win!!!")
+            playerRecord++
+            console.log(playerRecord)
+            console.log(gameStats)
+        }
         //If player selected paper and computer scissors, the computer wins, show message and record victory for computer.
-        //If the player selected papeper and computer paper, it is a tie, show message and record tie.
+        else if (playerChoice == "PAPER" && computerChoice == "SCISSORS"){
+            console.log("You Lose!!!")
+            computerRecord++
+            console.log(computerRecord)
+            console.log(gameStats)
+        }
         //If player selected scissors and computer paper, the player wins, show message and record victory for player. 
+        else if (playerChoice == "SCISSORS" && computerChoice == "PAPER"){
+            console.log("You Lose!!!")
+            computerRecord++
+            console.log(computerRecord)
+            console.log(gameStats)
         //If player selected scissors and computer rock, the computer wins, show message and record victory for player. 
-        //If player selected scissors and computer scissors, it is a tie, show message, record tie.
+        else if (playerChoice == "SCISSORS" && computerChoice == "ROCK"){
+            console.log("You Lose!!!")
+            computerRecord++
+            console.log(computerRecord)
+            console.log(gameStats)
+        //If player selected scissors and computer scissors OR if the player selected papeper and computer paper OR if player selected rock and computer rock, it is a tie, show message, record tie.
+        else if ((playerChoice == "ROCK" && computerChoice == "ROCK")||(playerChoice == "PAPER" && computerChoice == "PAPER")||(playerChoice == "SCISSORS" && computerChoice == "SCISSORS")){
+            tieRecord++
+            console.log("It is a tie!!")
+            console.log(tieRecord)
+            console.log(gameStats)
+        }
         //When the victory record for the player or the computer reaches 5, the game is over, congratule winner, show stats. 
         
     </script>
