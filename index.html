@@ -15,12 +15,11 @@
         //let playerName = prompt("What is your name?")
         //The computer welcomes the player
         //console.log(`Welcome ${playerName} to a game of Rock Paper Scissors`)
-        //The computer asks the player to choose rock, paper or scissors and remembers it
         let playerRecord = 0
         let computerRecord = 0
         let tieRecord = 0
         
-        
+      //Ask for player choice and check if it is valid  
         function getPlayerChoice(){
         let a = prompt("Choose rock, paper or scissors. Please")
         a = a.toUpperCase()
@@ -29,12 +28,7 @@
             a = a.toUpperCase()
         }
         return a
-        }
-        //The computer remembers the choice and checks if it is valid
-      //  if (playerChoice !== ("PAPER" || "SCISSORS" || "ROCK")){
-      //      console.log("Did not recognise a choice, please try again")
-      //  }
-        
+        }      
         //The computer chooses rock, paper or scissors randomly
         function getRndInteger(min, max) {
         return Math.floor(Math.random() * (max - min + 1) ) + min;
@@ -52,14 +46,13 @@
         a = "SCISSORS"}
         return a
         }
-
+//Create a round
         //The computer compares the players choice with its choice
         function playRound(playerChoice, computerChoice) {
             console.log(`You chose: ${playerChoice}`)
             console.log(`Computer chose: ${computerChoice}`)
             //If player selected rock and computer scissors OR if player selected paper and computer rock OR if player selected scissors and computer paper,
             //the player wins show message and record victory for player.
-            //let gameStats = `You: ${playerRecord} - Computer: ${computerRecord} - Ties ${tieRecord}`
             if ((playerChoice == "ROCK" && computerChoice == "SCISSORS")||(playerChoice == "PAPER" && computerChoice == "ROCK")||(playerChoice == "SCISSORS" && computerChoice == "PAPER")){
                 console.log("You win!!!")
                 playerRecord++
@@ -81,12 +74,15 @@
                 //console.log(tieRecord)
                 //console.log(gameStats)
             }
+
+     //When the victory record for the player or the computer reaches 5, the game is over, congratule winner, show stats.
             let gameStats = `You: ${playerRecord} - Computer: ${computerRecord} - Ties ${tieRecord}`
 
         return{
             gameStats
         }
     }
+    //Create a game with five rounds
     function game(){
         for (let i = 0; i < 5; i++) {
             let playerChoice = getPlayerChoice()
@@ -96,7 +92,7 @@
     }
         
     }
-        //When the victory record for the player or the computer reaches 5, the game is over, congratule winner, show stats.
+       
         console.log(game())
         
     </script>
