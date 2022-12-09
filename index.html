@@ -20,7 +20,7 @@
         let computerRecord = 0
         let tieRecord = 0
         
-        let playerChoice = getPlayerChoice()
+        
         function getPlayerChoice(){
         let a = prompt("Choose rock, paper or scissors. Please")
         a = a.toUpperCase()
@@ -39,7 +39,7 @@
         function getRndInteger(min, max) {
         return Math.floor(Math.random() * (max - min + 1) ) + min;
         }
-        let computerChoice = getComputerChoice()
+        
         function getComputerChoice() {
            let a = getRndInteger(1,3)
         if (a == 1){
@@ -87,8 +87,17 @@
             gameStats
         }
     }
+    function game(){
+        for (let i = 0; i < 5; i++) {
+            let playerChoice = getPlayerChoice()
+            let computerChoice = getComputerChoice()
+            playRound(playerChoice, computerChoice)
+            return gameStats
+    }
+        
+    }
         //When the victory record for the player or the computer reaches 5, the game is over, congratule winner, show stats.
-        console.log(playRound(playerChoice, computerChoice))
+        console.log(game())
         
     </script>
 </body>
