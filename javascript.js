@@ -1,9 +1,10 @@
 let playerRecord = 0
 let computerRecord = 0
 let tieRecord = 0
-let stringVerify1 = "ROCK"
+/*let stringVerify1 = "ROCK"
 let stringVerify2 = "PAPER"
-let stringVerify3 = "SCISSORS"
+let stringVerify3 = "SCISSORS"*/
+const buttons = document.querySelectorAll('button')
 
 /*function getPlayerChoice(a){
        let a = prompt("Choose rock, paper or scissors. Please")
@@ -33,18 +34,32 @@ function getComputerChoice() {
     return a;
 }
 
+function disableButtons() {
+    buttons.forEach(elem => {
+        elem.disabled = true
+    })
+}
+
 function playRound(playerChoice) {
   let computerChoice = getComputerChoice()
-    console.log(`You chose: ${playerChoice}`)
-    console.log(`Computer chose: ${computerChoice}`)
+  let result = ""
+
 
     if ((playerChoice == "ROCK" && 
     computerChoice == "SCISSORS")||
     (playerChoice == "PAPER" && computerChoice == "ROCK")||
     (playerChoice == "SCISSORS" && computerChoice == "PAPER")){
-        console.log("You win the round!");
+        
         playerRecord++;
+        result = ('You win! ' + playerChoice + ' beats ' + 
+        computerChoice + "<br><br>Player score: " + playerRecord 
+        + "<br>Computer score: " + computerRecord)
+
         //return playerRecord;
+        if (playerRecord == 5) {
+            result += '<br><br>You won the game! Reload the page to play again'
+            disableButtons()
+        }
     }
 
 
@@ -52,9 +67,16 @@ function playRound(playerChoice) {
     computerChoice == "PAPER")||
     (playerChoice == "PAPER" && computerChoice == "SCISSORS")||
     (playerChoice == "SCISSORS" && computerChoice == "ROCK")){
-        console.log("You lose the round!");
+        
         computerRecord++;
+        result = ('You lose! ' + computerChoice + ' beats ' + 
+        playerChoice + "<br><br>Player score: " + 
+        playerRecord + "<br>Computer score: " + computerRecord)
         //return computerRecord;
+        if (computerRecord == 5) {
+            result += '<br><br>The computer wins the game! Reload the page to play again'
+            disableButtons()
+        }
     }
 
 
@@ -62,11 +84,14 @@ function playRound(playerChoice) {
     (playerChoice == "PAPER" && computerChoice == "PAPER")||
     (playerChoice == "SCISSORS" && computerChoice == "SCISSORS")){
         tieRecord++;
-        console.log("It is a tie!!");
-        //return tieRecord;
+        
+        result = ('It\'s a tie. You both chose ' + playerChoice
+            + "<br><br>Player score: " + playerRecord + 
+            "<br>Computer score: " + computerRecord)
+        //return tieRecord;    
     }     
-
-
+    document.getElementById('scoreboard').innerHTML = result;
+return;
 }
 
 function game(){
@@ -94,13 +119,13 @@ const rockbtn = document.querySelector('#ROCK');
 const paperbtn = document.querySelector('#PAPER');
 const scissorsbtn = document.querySelector('#SCISSORS');   
 
-rockbtn.addEventListener('click',function(e){
+rockbtn.addEventListener('click',function(){
     playRound("ROCK")
 } );
-paperbtn.addEventListener('click',function(e){
+paperbtn.addEventListener('click',function(){
     playRound("PAPER")
 });
-scissorsbtn.addEventListener('click', function(e){
+scissorsbtn.addEventListener('click', function(){
     playRound("SCISSORS")
 });
 
