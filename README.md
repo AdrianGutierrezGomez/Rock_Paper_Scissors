@@ -18,3 +18,5 @@ If player selected scissors and computer paper, the player wins, show message an
 If player selected scissors and computer rock, the computer wins, show message and record victory for player. 
 If player selected scissors and computer scissors, it is a tie, show message, record tie.
 When the victory record for the player or the computer reaches 5, the game is over, congratule winner, show stats. 
+## Live:
+https://adriangutierrezgomez.github.io/Rock_Paper_Scissors/
